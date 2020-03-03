@@ -1,6 +1,8 @@
 # Sudoku
 
-![demo](https://gph.is/g/Zrdw5eP)
+![demo](https://media.giphy.com/media/dXFDMIah0R1UJuien4/giphy.gif)
 
-![demo](<iframe src="https://giphy.com/embed/cLNQI1DLghFbVwnUkn" width="480" height="375" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/cLNQI1DLghFbVwnUkn">via GIPHY</a></p>)
+![demo2](https://gph.is/g/aKAV7Wq)
+
+
 
