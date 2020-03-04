@@ -17,3 +17,17 @@ Hard: 60 tiles hidden, 3 hints available.
 Empty: A completely empty board, no hints. Used in case a user wants, for example, to solve a Sudoku game from a newspaper or other source they may be stuck on. So they can replicate it using the Empty setting and get hints or even a full solution using this app's features. 
 
 -'Check' button:
+Causes every row, column or square containing a mistake (a number appearing more than once) to be highlit in red.
+
+-'Hint' button:
+Will reveal one hidden tile with a correct number.
+Note: 'A correct number' doesn't only mean a number that will cause no immidiate errors, but one that can postively lead to a fully solved board. The only way to guarantee this is to solve the entire existing board (behind the scenes) and to extract the value for the hint from the full solution.
+
+-'Again' button: Clear all user input and restart the same board.
+
+-'New Board' button: Start a new cleared board with different values on the same difficulty level.
+
+-'Finish' button: Check if user has succesfully solved the current board, and display a corresponding message.
+
+-'Solve' button: Fully solves the current board. It will first try to complete what the user started, as in, it will try to solve the board while keeping the user's input. If the user's input lead to a dead end, it will be cleared and a solution will be provided using the initial board values provided.
+Note: This feature does not use a copy of the initial board that was created prior to hiding the necessary number of tiles as the correct solution. Doing so is a mistake since a board with a certain number of hidden tiles can have multiple solutions. Instead it will solve the board on its own every time.
