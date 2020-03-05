@@ -38,7 +38,8 @@ Will reveal one hidden tile with a correct number.\
 
 - **'Back to main'** (clickable text): Returns to the entrance login screen. Current user will be logged out.
 
-#### Display: Above the game board, the following information will be displayed for the user:
+#### Display:
+Above the game board, the following information will be displayed for the user:
 Player name, current board's difficulty, number of hints left available, time elapsed since game started.
 Beneath the board is where the aforementioned buttons are, as well as a status message.
 
