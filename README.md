@@ -42,5 +42,3 @@ Player name, current board's difficulty, number of hints left available, time el
 Beneath the board is where the aforementioned buttons are, as well as a status message.
 
 -----
-###### Further detailed information is in the body of code.
-###### For inquiries: asafg86@gmail.com
