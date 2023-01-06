@@ -11,7 +11,7 @@ let filledMatrix; //the matrix we get from the user
 let interval; //set interval of time
 let dict = {}; //create dictionary for all users with their passwords
 dict["abcd"] = "1234"; //initialize a user in thr dictionary
-let name = ""; //name of the user
+var name = ""; //name of the user
 
 
 /** 
@@ -39,7 +39,7 @@ function LogincheckUserAndPassword() {
         if (username in dict) { //case the username is exist in the dictionary
             if (dict[username] == password) {
                 name = username;
-                alert("You signin succefully!");
+                alert("Sign-in successful!");
                 openChooseLevel();
             }
             else { //case password does not match to the username
@@ -57,18 +57,17 @@ function LogincheckUserAndPassword() {
  * Create a new user in the system.
  */
 function sendRegistreationForm() {
-    //get username and password the user entered
+
     let username = document.getElementById("usernameR").value;
     let password = document.getElementById("pwd1").value;
     let password2 = document.getElementById("pwd2").value;
-    //initialize all the errors with none
+
     document.getElementById('enterUserNameR').style.display = 'none';
     document.getElementById('enterPassword').style.display = 'none';
     document.getElementById('enterPassword2').style.display = 'none';
     document.getElementById('existUserNameR').style.display = 'none';
     document.getElementById('equalPassword').style.display = 'none';
 
-    //case username or password or confirm password are empty
     if (username == "" || password == "" || password2 == "") { 
         if (username == "") {
             document.getElementById('enterUserNameR').style.display = 'inline';
@@ -81,16 +80,16 @@ function sendRegistreationForm() {
         }
     }
     else {
-        if (username in dict) { //case the username is already exist in the dictionary
+        if (username in dict) { 
             document.getElementById('existUserNameR').style.display = 'inline';
         }
         else {
             if (password != password2) { //case the password and confirm password are not the same
                 document.getElementById('equalPassword').style.display = 'inline';
             }
-            else { //insert the new user to the dictionary
+            else {
                 dict[username] = password;
-                alert("You created a new user successfully!");
+                alert("Sign-up successful!");
                 openSignIn();
             }
 
@@ -144,11 +143,8 @@ function resetSignin() {
  */
 function openChooseLevel() {
     document.getElementById('chooseLevel').style.display = 'inline-block';
-    document.getElementById('chooseLevel').style.visibility = 'visible';
     document.getElementById('signIn').style.display = 'none';
-    document.getElementById('signIn').style.visibility = 'hidden';
     document.getElementById('Game').style.display = 'none';
-    document.getElementById('Game').style.visibility = 'hidden';
     document.getElementById('nameOfUser').innerHTML = "Welcome " + name + "!";
 }
 
@@ -158,11 +154,8 @@ function openChooseLevel() {
  */
 function openSignIn() {
     document.getElementById('signIn').style.display = 'inline-block';
-    document.getElementById('signIn').style.visibility = 'visible';
     document.getElementById('MainWindow').style.display = 'none';
-    document.getElementById('MainWindow').style.visibility = 'hidden';
     document.getElementById('registreation').style.display = 'none';
-    document.getElementById('registreation').style.visibility = 'hidden';
     resetSignin();
 }
 
@@ -172,9 +165,7 @@ function openSignIn() {
  */
 function openRegistreation() {
     document.getElementById('registreation').style.display = 'inline-block';
-    document.getElementById('registreation').style.visibility = 'visible';
     document.getElementById('signIn').style.display = 'none';
-    document.getElementById('signIn').style.visibility = 'hidden';
     resetRegistreation();
 }
 
@@ -183,23 +174,18 @@ function openRegistreation() {
  * Open the game page and hide the other pages.
  */
 function openGame() {
-    document.getElementById('Game').style.display = 'inline-block';
-    document.getElementById('Game').style.visibility = 'visible';
+    document.getElementById('Game').style.display = 'flex';
     document.getElementById('chooseLevel').style.display = 'none';
-    document.getElementById('chooseLevel').style.visibility = 'hidden';
     document.getElementById('MainWindow').style.display = 'none';
-    document.getElementById('MainWindow').style.visibility = 'hidden';
     document.getElementById('registreation').style.display = 'none';
-    document.getElementById('registreation').style.visibility = 'hidden';
     document.getElementById('signIn').style.display = 'none';
-    document.getElementById('signIn').style.visibility = 'hidden';
     if (name == "") {
-        document.getElementById('userDisplay').innerHTML = "Player: Guest";
-        document.getElementById('changeLevelLink').style.visibility = 'hidden';
+        document.getElementById('userDisplay').innerHTML = "Player:<br> Guest";
+        document.getElementById('changeLevelLink').style.display = 'none';
     }
     else {
-        document.getElementById('userDisplay').innerHTML = "Player: " + name;
-        document.getElementById('changeLevelLink').style.visibility = 'visible';
+        document.getElementById('userDisplay').innerHTML = "Player:<br>" + name;
+        document.getElementById('changeLevelLink').style.display = 'initial';
     }
     createNewBoard();
 }
@@ -212,15 +198,10 @@ function backToMain() {
     name="";
     clearInterval(interval);
     document.getElementById('MainWindow').style.display = 'inline-block';
-    document.getElementById('MainWindow').style.visibility = 'visible';
     document.getElementById('chooseLevel').style.display = 'none';
-    document.getElementById('chooseLevel').style.visibility = 'hidden';
     document.getElementById('signIn').style.display = 'none';
-    document.getElementById('signIn').style.visibility = 'hidden';
     document.getElementById('registreation').style.display = 'none';
-    document.getElementById('registreation').style.visibility = 'hidden';
     document.getElementById('Game').style.display = 'none';
-    document.getElementById('Game').style.visibility = 'hidden';
 }
 
 
@@ -230,34 +211,35 @@ function backToMain() {
 function showTime() {
     let d = new Date();
     let time = Math.floor((d - startTime) / 1000);
-    document.getElementById("lblTime").value = time;
+    document.getElementById("lblTime").innerHTML = time;
 }
 
 
-/** 
- * Update the level to easy.
- */
+function updateLevel(userLevel) {
+    level = 1;
+    if (userLevel == "Medium") {
+        level = 2;
+    } else if (userLevel == "Hard") {
+        level = 3;
+    }
+
+    document.getElementById('userLevel').innerHTML = `Level:<br>${userLevel}`;
+    openGame();
+}
+
 function updateEasy() {
     level = 1;
-    document.getElementById('userLevel').innerHTML = "Level: Easy";
+    document.getElementById('userLevel').innerHTML = "Level:<br>Easy";
     openGame();
 }
-
-/** 
- * Update the level to medium.
- */
 function updateMedium() {
     level = 2;
-    document.getElementById('userLevel').innerHTML = "Level: Medium";
+    document.getElementById('userLevel').innerHTML = "Level:<br>Medium";
     openGame();
 }
-
-/** 
- * Update the level to hard.
- */
 function updateHard() {
     level = 3;
-    document.getElementById('userLevel').innerHTML = "Level: Hard";
+    document.getElementById('userLevel').innerHTML = "Level:<br>Hard";
     openGame();
 }
 
@@ -286,7 +268,7 @@ function drawSudoku() {
     if (level == 0) {
         hints = 0;
     }
-    document.getElementById('hintsLeft').innerHTML = `Hints left: ${hints}`;
+    document.getElementById('hintsLeft').innerHTML = `Hints left:<br>${hints}`;
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
             let cell = document.getElementById("r" + i + "c" + j);
