@@ -43,5 +43,5 @@ Beneath the board is where the aforementioned buttons are, as well as a status m
 
 -----
 Did you know? 
-< br />
+<br>
 There are 6,670,903,752,021,072,936,960 different combinations for a sudoku board

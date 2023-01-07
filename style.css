@@ -12,6 +12,8 @@
 body,
 .container {
     height: 100%;
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: 600;
 }
 
 #MainWindow {
@@ -20,7 +22,6 @@ body,
     padding: 0;
     float: center;
     text-align: center;
-    font-family: "Quamaine";
     font-size: 10vw;
     border: 7px ridge rgb(23, 103, 95);
     border-radius: 10px;
@@ -44,20 +45,40 @@ body,
     border: 7px ridge rgb(23, 103, 95);
     border-radius: 10px;
     box-shadow: 0 0 10px 10px rgb(23, 103, 95) inset;
-    font-family: "Quamaine";
     text-align: center;
     display: none;
 }
 
+#signIn > h1 {
+    margin-top: 3%;
+    font-size: 3vw;
+}
 #signIn > a {
     font-size: 2vw;
 }
-
-.formFields {
-    font-size: 2.4vw;
+#signIn img {
+    width: 2vw;
 }
 
-#registreation {
+#signInInputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.formFields, .inputFields {
+    font-size: 2.4vw;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.inputFields input, .formFields span {
+    margin: 1%;
+}
+
+#registration {
     height: 90%;
     width: 90%;
     margin: 5%;
@@ -65,15 +86,22 @@ body,
     border-radius: 10px;
     box-shadow: 0 0 10px 10px rgb(23, 103, 95) inset;
     float: center;
-    font-family: "Quamaine";
     text-align: center;
     display: none;
+}
+
+#regHeader {
+    font-size: 2.2vw;
+}
+#regHeader img {
+    width: 2vw;
+    aspect-ratio: 1 / 1;
 }
 
 #tableR {
     text-align: left;
     margin: auto;
-    font-size: 1.7vw;
+    font-size: 1.5vw;
 }
 
 #Game {
@@ -83,8 +111,6 @@ body,
     border: 7px ridge rgb(23, 103, 95);
     border-radius: 10px;
     box-shadow: 0 0 10px 10px rgb(23, 103, 95) inset;
-    float: center;
-    font-family: "Quamaine";
     display: none;
 }
 
@@ -95,9 +121,21 @@ body,
     border-style: solid;
     border-color: black;
     float: center;
-    font-family: "Quamaine";
     text-align: center;
     display: none;
+    border: 7px ridge rgb(23, 103, 95);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 10px rgb(23, 103, 95) inset;
+}
+
+#chooseLevel img {
+    width: 10vw;
+    aspect-ratio: 1 / 1;
+}
+
+#chooseLevel h4 {
+    margin-top: 3%;
+    font-size: 1.8vw;
 }
 
 #grid {
@@ -154,20 +192,6 @@ input.numCell {
     font-size: 15px;
 }
 
-#backToMainHref {
-    font-size: 2vw;
-}
-#Game #backToMainHref {
-    font-size: 1.6vw;
-    margin: 1%;
-}
-
-#changeLevelLink {
-    font-size: 20px;
-    color: #2f848a;
-    display: none;
-}
-
 #gameData {
     margin: 1% 0;
     width: 96%;
@@ -180,7 +204,12 @@ input.numCell {
     flex-direction: column;
     justify-content: center;
     font-size: 1.3vw;
+    font-weight: 600;
     color: darkslateblue;
+}
+
+#gameData #hintsLeft {
+    color: rgb(88, 140, 185);
 }
 
 #lblTime {
@@ -191,6 +220,7 @@ input.numCell {
     font-size: 1.7vw !important;
     margin: 1%;
 }
+
 #Game .menuButtons {
     font-size: 1vw !important;
     font-weight: 600;
@@ -200,12 +230,13 @@ input.numCell {
 
 #gameMessage {
     margin: 1%;
+    color: slateblue;
 }
 #message {
     font-size: 1.5vw;
     margin: 2%;
 }
-#gameMessage img {
+#gameMessage img  {
     width: 1.3vw;
     aspect-ratio: 1 / 1;
 }
@@ -214,14 +245,33 @@ input.numCell {
     text-align: center;
     width: 50%;
     margin: 1% auto 2%;
-}
-#backButtons a {
-    margin: 0 5%;
+    font-size: 1.5vw;
 }
 
-@font-face {
-    font-family: 'Quamaine';
-    src: url('Quamaine.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+#backButtons a {
+    margin: 0 5%;
+    padding: 1%;
+    background-color:rgba(23, 103, 95, 0.2);
+    border-radius: 10px;
 }
+#backButtons a:hover {
+    text-decoration: none;
+    background-color:rgba(23, 103, 95, 0.3);
+}
+
+#registration #backToMainHref {
+    margin-bottom: 3%;
+}
+
+#Game #backToMainHref {
+    margin: 1%;
+}
+
+#changeLevelLink {
+    display: none;
+}
+
+#backToMainHref {
+    font-size: 1.6vw;
+}
+

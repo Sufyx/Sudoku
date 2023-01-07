@@ -14,6 +14,12 @@
                 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
                 crossorigin="anonymous">
 
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap"
+                rel="stylesheet">
+
         <title>Sudoku Zone</title>
 
         <link rel="icon" href="favicon.png">
@@ -31,27 +37,29 @@
                 <div id="signIn">
                         <br>
 
-                        <h1> <img src="pencilImg.png" width="30px"> Sign in</h1><br> <br>
+                        <h1> <img src="pencilImg.png" > Sign in</h1><br> <br>
 
-                        <span class="formFields">
-                                UserName:
-                                <input id="username" name="username" size="20" type="text" required>
-                        </span><br>
-
+                        <span id="nameError" class="errorMessage"> Username does not exist</span><br>
                         <span id="nameEmpty" class="errorMessage"> Please enter username</span><br>
-                        <span id="nameError" class="errorMessage"> Username does not exist</span>
-
-                        <span class="formFields">
-                                Password:
-                                <input id="password" name="password" size="20" type="password" required>
-                        </span><br>
+                        
+                        <div id="signInInputs">
+                                <span class="formFields">
+                                        <span>UserName: </span>
+                                        <span>Password: </span>
+                                </span>
+                                <span class="inputFields">
+                                        <input id="username" name="username" size="20" type="text" required>
+                                        <input id="password" name="password" size="20" type="password" required>
+                                </span>
+                        </div>
+                        
 
                         <span id="passEmpty" class="errorMessage"> Please enter password</span>
                         <span id="passError" class="errorMessage"> Password not match to the username</span>
                         <br>
 
                         <br>
-                        <a href="javascript:openRegistreation()">Create New user</a>
+                        <a href="javascript:openRegistration()">Create New user</a>
                         <br><br>
                         <button class="btn btn-dark menuButtons" onClick="LogincheckUserAndPassword()">
                                 submit
@@ -61,30 +69,34 @@
                         <br> <br>
                 </div>
 
-                <div id="registreation">
+                <div id="registration">
                         <br>
-                        <h1>
-                                <img src="pencilImg.png" width="30px">
+                        <h1 id="regHeader">
+                                <img src="pencilImg.png">
                                 Registration
-                        </h1><br>
+                        </h1>
 
                         <br>
-                        <table height="122" id="tableR">
+                        <table id="tableR">
                                 <tr>
                                         <td>User Name*:</td>
                                         <td><input id="usernameR" type="text" tabindex="1" required pattern="^\w+$"><br>
-                                                <span id="enterUserNameR" class="errorMessage">Please enter User name</span>
-                                                <span id="existUserNameR" class="errorMessage">User name taken</span> </td>
+                                                <span id="enterUserNameR" class="errorMessage">Please enter User
+                                                        name</span>
+                                                <span id="existUserNameR" class="errorMessage">User name taken</span>
+                                        </td>
                                 </tr>
                                 <tr>
                                         <td> Password*: </td>
                                         <td> <input id="pwd1" name="pwd1" type="password"><br>
-                                                <span id="enterPassword" class="errorMessage">Please enter Password</span></td>
+                                                <span id="enterPassword" class="errorMessage">Please enter
+                                                        Password</span></td>
                                 </tr>
                                 <tr>
                                         <td> Confirm Password*:</td>
                                         <td> <input id="pwd2" name="pwd2" type="password"><br>
-                                                <span id="enterPassword2" class="errorMessage">Please enter confirmation password</span>
+                                                <span id="enterPassword2" class="errorMessage">Please enter confirmation
+                                                        password</span>
                                                 <span id="equalPassword" class="errorMessage">
                                                         Confirmation password does not match the password
                                                 </span></td>
@@ -117,26 +129,26 @@
                         </table>
                         <br />
                         <button id="sendRegister" class="btn btn-dark menuButtons" width="30px" height="10px"
-                                onClick="sendRegistreationForm()">Save</button>
+                                onClick="sendRegistrationForm()">Save</button>
                         <button id="reset" class="btn btn-dark menuButtons" width="30px" height="10px"
-                                onClick="resetRegistreation()">Clear</button> <br>
+                                onClick="resetRegistration()">Clear</button> <br>
                         <a href="javascript:backToMain()" id="backToMainHref">Back to main</a>
-                        <br>
+                        <br><br>
                 </div>
 
                 <div id="chooseLevel">
                         <br>
                         <h1 id="nameOfUser"></h1> <br>
-                        <img src="welcome.png" height="150px" width="150px"><br>
+                        <img src="welcome.png"><br>
                         <h4>Choose Level difficulty:</h4><br>
                         <button class="btn btn-dark menuButtons" onClick="updateLevel('Easy')">Easy</button>
                         <button class="btn btn-dark menuButtons" onClick="updateLevel('Medium')">Medium</button>
                         <button class="btn btn-dark menuButtons" onClick="updateLevel('Hard')">Hard</button>
                         <br>
                         <button class="btn btn-dark menuButtons" onClick="updateEmpty()">Empty</button>
-                        <br>
+                        <br><br>
                         <a href="javascript:backToMain()" id="backToMainHref">Back to main</a>
-                        <br>
+                        <br><br>
                 </div>
 
                 <div id="Game">
@@ -157,8 +169,8 @@
                                                 <td id='i0j1' class="tdSudoku"><input id='r0c1' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i0j2' class="tdSudoku solid-border-right"><input id='r0c2' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i0j2' class="tdSudoku solid-border-right"><input id='r0c2'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
                                                 <td id='i0j3' class="tdSudoku"><input id='r0c3' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
@@ -166,8 +178,8 @@
                                                 <td id='i0j4' class="tdSudoku"><input id='r0c4' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i0j5' class="tdSudoku solid-border-right"><input id='r0c5' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i0j5' class="tdSudoku solid-border-right"><input id='r0c5'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
                                                 <td id='i0j6' class="tdSudoku"><input id='r0c6' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
@@ -186,8 +198,8 @@
                                                 <td id='i1j1' class="tdSudoku"><input id='r1c1' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i1j2' class="tdSudoku solid-border-right"><input id='r1c2' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i1j2' class="tdSudoku solid-border-right"><input id='r1c2'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
                                                 <td id='i1j3' class="tdSudoku"><input id='r1c3' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
@@ -195,8 +207,8 @@
                                                 <td id='i1j4' class="tdSudoku"><input id='r1c4' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i1j5' class="tdSudoku solid-border-right"><input id='r1c5' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i1j5' class="tdSudoku solid-border-right"><input id='r1c5'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
                                                 <td id='i1j6' class="tdSudoku"><input id='r1c6' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
@@ -209,32 +221,34 @@
                                                 </td>
                                         </tr>
                                         <tr>
-                                                <td id='i2j0' class="tdSudoku solid-border-bottom"><input id='r2c0' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i2j0' class="tdSudoku solid-border-bottom"><input id='r2c0'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i2j1' class="tdSudoku solid-border-bottom"><input id='r2c1' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i2j1' class="tdSudoku solid-border-bottom"><input id='r2c1'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i2j2' class="tdSudoku solid-border-bottom solid-border-right"><input id='r2c2' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i2j2' class="tdSudoku solid-border-bottom solid-border-right">
+                                                        <input id='r2c2' type="text" maxlength="1"
+                                                                oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i2j3' class="tdSudoku solid-border-bottom"><input id='r2c3' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i2j3' class="tdSudoku solid-border-bottom"><input id='r2c3'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i2j4' class="tdSudoku solid-border-bottom"><input id='r2c4' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i2j4' class="tdSudoku solid-border-bottom"><input id='r2c4'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i2j5' class="tdSudoku solid-border-bottom solid-border-right"><input id='r2c5' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i2j5' class="tdSudoku solid-border-bottom solid-border-right">
+                                                        <input id='r2c5' type="text" maxlength="1"
+                                                                oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i2j6' class="tdSudoku solid-border-bottom"><input id='r2c6' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i2j6' class="tdSudoku solid-border-bottom"><input id='r2c6'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i2j7' class="tdSudoku solid-border-bottom"><input id='r2c7' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i2j7' class="tdSudoku solid-border-bottom"><input id='r2c7'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i2j8' class="tdSudoku solid-border-bottom"><input id='r2c8' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i2j8' class="tdSudoku solid-border-bottom"><input id='r2c8'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
                                         </tr>
 
@@ -246,8 +260,8 @@
                                                 <td id='i3j1' class="tdSudoku"><input id='r3c1' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i3j2' class="tdSudoku solid-border-right"><input id='r3c2' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i3j2' class="tdSudoku solid-border-right"><input id='r3c2'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
                                                 <td id='i3j3' class="tdSudoku"><input id='r3c3' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
@@ -255,8 +269,8 @@
                                                 <td id='i3j4' class="tdSudoku"><input id='r3c4' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i3j5' class="tdSudoku solid-border-right"><input id='r3c5' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i3j5' class="tdSudoku solid-border-right"><input id='r3c5'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
                                                 <td id='i3j6' class="tdSudoku"><input id='r3c6' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
@@ -275,8 +289,8 @@
                                                 <td id='i4j1' class="tdSudoku"><input id='r4c1' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i4j2' class="tdSudoku solid-border-right"><input id='r4c2' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i4j2' class="tdSudoku solid-border-right"><input id='r4c2'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
                                                 <td id='i4j3' class="tdSudoku"><input id='r4c3' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
@@ -284,8 +298,8 @@
                                                 <td id='i4j4' class="tdSudoku"><input id='r4c4' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i4j5' class="tdSudoku solid-border-right"><input id='r4c5' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i4j5' class="tdSudoku solid-border-right"><input id='r4c5'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
                                                 <td id='i4j6' class="tdSudoku"><input id='r4c6' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
@@ -298,32 +312,34 @@
                                                 </td>
                                         </tr>
                                         <tr>
-                                                <td id='i5j0' class="tdSudoku solid-border-bottom"><input id='r5c0' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i5j0' class="tdSudoku solid-border-bottom"><input id='r5c0'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i5j1' class="tdSudoku solid-border-bottom"><input id='r5c1' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i5j1' class="tdSudoku solid-border-bottom"><input id='r5c1'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i5j2' class="tdSudoku solid-border-bottom solid-border-right"><input id='r5c2' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i5j2' class="tdSudoku solid-border-bottom solid-border-right">
+                                                        <input id='r5c2' type="text" maxlength="1"
+                                                                oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i5j3' class="tdSudoku solid-border-bottom"><input id='r5c3' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i5j3' class="tdSudoku solid-border-bottom"><input id='r5c3'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i5j4' class="tdSudoku solid-border-bottom"><input id='r5c4' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i5j4' class="tdSudoku solid-border-bottom"><input id='r5c4'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i5j5' class="tdSudoku solid-border-bottom solid-border-right"><input id='r5c5' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i5j5' class="tdSudoku solid-border-bottom solid-border-right">
+                                                        <input id='r5c5' type="text" maxlength="1"
+                                                                oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i5j6' class="tdSudoku solid-border-bottom"><input id='r5c6' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i5j6' class="tdSudoku solid-border-bottom"><input id='r5c6'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i5j7' class="tdSudoku solid-border-bottom"><input id='r5c7' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i5j7' class="tdSudoku solid-border-bottom"><input id='r5c7'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i5j8' class="tdSudoku solid-border-bottom"><input id='r5c8' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i5j8' class="tdSudoku solid-border-bottom"><input id='r5c8'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
                                         </tr>
 
@@ -335,8 +351,8 @@
                                                 <td id='i6j1' class="tdSudoku"><input id='r6c1' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i6j2' class="tdSudoku solid-border-right"><input id='r6c2' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i6j2' class="tdSudoku solid-border-right"><input id='r6c2'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
                                                 <td id='i6j3' class="tdSudoku"><input id='r6c3' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
@@ -344,8 +360,8 @@
                                                 <td id='i6j4' class="tdSudoku"><input id='r6c4' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i6j5' class="tdSudoku solid-border-right"><input id='r6c5' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i6j5' class="tdSudoku solid-border-right"><input id='r6c5'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
                                                 <td id='i6j6' class="tdSudoku"><input id='r6c6' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
@@ -364,8 +380,8 @@
                                                 <td id='i7j1' class="tdSudoku"><input id='r7c1' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i7j2' class="tdSudoku solid-border-right"><input id='r7c2' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i7j2' class="tdSudoku solid-border-right"><input id='r7c2'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
                                                 <td id='i7j3' class="tdSudoku"><input id='r7c3' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
@@ -373,8 +389,8 @@
                                                 <td id='i7j4' class="tdSudoku"><input id='r7c4' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i7j5' class="tdSudoku solid-border-right"><input id='r7c5' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i7j5' class="tdSudoku solid-border-right"><input id='r7c5'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
                                                 <td id='i7j6' class="tdSudoku"><input id='r7c6' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
@@ -393,8 +409,8 @@
                                                 <td id='i8j1' class="tdSudoku"><input id='r8c1' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i8j2' class="tdSudoku solid-border-right"><input id='r8c2' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i8j2' class="tdSudoku solid-border-right"><input id='r8c2'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
                                                 <td id='i8j3' class="tdSudoku"><input id='r8c3' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
@@ -402,8 +418,8 @@
                                                 <td id='i8j4' class="tdSudoku"><input id='r8c4' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
-                                                <td id='i8j5' class="tdSudoku solid-border-right"><input id='r8c5' type="text"
-                                                                maxlength="1" oninput='clearRedNessBoard()'>
+                                                <td id='i8j5' class="tdSudoku solid-border-right"><input id='r8c5'
+                                                                type="text" maxlength="1" oninput='clearRedNessBoard()'>
                                                 </td>
                                                 <td id='i8j6' class="tdSudoku"><input id='r8c6' type="text"
                                                                 maxlength="1" oninput='clearRedNessBoard()'>
@@ -431,16 +447,16 @@
                                         Hint
                                 </button>
                                 <button id="againButton" class="btn btn-dark menuButtons" onClick="clearBoard()">
-                                        Again
+                                        Restart
                                 </button>
                                 <button id="newButton" class="btn btn-dark menuButtons" onClick="createNewBoard()">
                                         New board
                                 </button>
                                 <button id="finishButton" class="btn btn-dark menuButtons" onClick="finishSoduko()">
-                                        Finish
+                                        Done
                                 </button>
                                 <button id="solveButton" class="btn btn-dark menuButtons" onClick="solveBoard(false)">
-                                        Solve
+                                        Show Solution
                                 </button>
                         </div>
                         <div id="backButtons">

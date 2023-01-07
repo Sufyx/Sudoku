@@ -56,7 +56,7 @@ function LogincheckUserAndPassword() {
 /** 
  * Create a new user in the system.
  */
-function sendRegistreationForm() {
+function sendRegistrationForm() {
 
     let username = document.getElementById("usernameR").value;
     let password = document.getElementById("pwd1").value;
@@ -101,7 +101,7 @@ function sendRegistreationForm() {
 /** 
  * Clear the registration form.
  */
-function resetRegistreation() {
+function resetRegistration() {
     //initialize all the errors in none
     document.getElementById('enterUserNameR').style.display = 'none';
     document.getElementById('enterPassword').style.display = 'none';
@@ -118,8 +118,6 @@ function resetRegistreation() {
     document.getElementById('male').checked = false;
     document.getElementById('mail').value = "";
     document.getElementById('dobday').value = "";
-    document.getElementById('dobmonth').value = "";
-    document.getElementById('dobyear').value = "";
 }
 
 
@@ -155,7 +153,7 @@ function openChooseLevel() {
 function openSignIn() {
     document.getElementById('signIn').style.display = 'inline-block';
     document.getElementById('MainWindow').style.display = 'none';
-    document.getElementById('registreation').style.display = 'none';
+    document.getElementById('registration').style.display = 'none';
     resetSignin();
 }
 
@@ -163,10 +161,10 @@ function openSignIn() {
 /** 
  * Open the registration page and hidden the other pages.
  */
-function openRegistreation() {
-    document.getElementById('registreation').style.display = 'inline-block';
+function openRegistration() {
+    document.getElementById('registration').style.display = 'inline-block';
     document.getElementById('signIn').style.display = 'none';
-    resetRegistreation();
+    resetRegistration();
 }
 
 
@@ -177,7 +175,7 @@ function openGame() {
     document.getElementById('Game').style.display = 'flex';
     document.getElementById('chooseLevel').style.display = 'none';
     document.getElementById('MainWindow').style.display = 'none';
-    document.getElementById('registreation').style.display = 'none';
+    document.getElementById('registration').style.display = 'none';
     document.getElementById('signIn').style.display = 'none';
     if (name == "") {
         document.getElementById('userDisplay').innerHTML = "Player:<br> Guest";
@@ -200,7 +198,7 @@ function backToMain() {
     document.getElementById('MainWindow').style.display = 'inline-block';
     document.getElementById('chooseLevel').style.display = 'none';
     document.getElementById('signIn').style.display = 'none';
-    document.getElementById('registreation').style.display = 'none';
+    document.getElementById('registration').style.display = 'none';
     document.getElementById('Game').style.display = 'none';
 }
 
@@ -263,7 +261,7 @@ function drawSudoku() {
     document.getElementById('solveButton').disabled = false;
     let message = document.getElementById("message");
     message.innerHTML = "Good Luck!";
-    message.style.color = "black";
+    message.style.color = "inherit";
     hints = (6-level);
     if (level == 0) {
         hints = 0;
